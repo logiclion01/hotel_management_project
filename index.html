@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Hotel Management System</h1>
+
+    <button onclick="checkIn()">Check-In</button>
+    <button onclick="checkOut()">Check-Out</button>
+    <button onclick="viewOccupancy()">View Occupancy</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    const rooms = Array.from({length: 10}, (_, i) => [i + 1, "Empty"]);
+
+    function checkIn() {
+        const roomNumber = prompt("Enter room number (1-10):");
+        const roomIndex = roomNumber - 1;
+
+        if (roomIndex >= 0 && roomIndex < rooms.length) {
+            if (rooms[roomIndex][1] === "Empty") {
+                const guestName = prompt("Enter guest name:");
+                rooms[roomIndex][1] = guestName;
+                displayMessage("Check-in successful.");
+            } else {
+                displayMessage("Sorry, this room is already occupied.");
+            }
+        } else {
+            displayMessage("Invalid room number. Please try again.");
+        }
+    }
+
+    function checkOut() {
+        const roomNumber = prompt("Enter room number (1-10):");
+        const roomIndex = roomNumber - 1;
+
+        if (roomIndex >= 0 && roomIndex < rooms.length) {
+            if (rooms[roomIndex][1] !== "Empty") {
+                displayMessage(`Guest ${rooms[roomIndex][1]} has checked out of room ${rooms[roomIndex][0]}.`);
+                rooms[roomIndex][1] = "Empty";
+            } else {
+                displayMessage("Sorry, this room is already vacant.");
+            }
+        } else {
+            displayMessage("Invalid room number. Please try again.");
+        }
+    }
+
+    function viewOccupancy() {
+        let output = "Room\tGuest\n";
+        rooms.forEach(room => {
+            output += `${room[0]}\t${room[1]}\n`;
+        });
+        displayMessage(output);
+    }
+
+    function displayMessage(message) {
+        const outputDiv = document.getElementById("output");
+        const messageNode = document.createElement("p");
+        messageNode.innerText = message;
+        outputDiv.appendChild(messageNode);
+        outputDiv.scrollTop = outputDiv.scrollHeight; // Auto-scroll to latest message
+    }
+</script>
+
+</body>
+</html>
