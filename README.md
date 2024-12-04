@@ -14,6 +14,7 @@ Java: Logic for managing room check-ins, check-outs, and displaying occupancy.
 HTML: Contains the structure of the page, including buttons for interaction and a container to display the output.
 CSS: Provides the styling for the layout, buttons, and output area. It also includes responsive design rules for smaller screen sizes.
 Java: Handles the logic for checking in, checking out, and displaying the room occupancy. It uses user input and dynamically updates the output section on the page.
+JavaScript Overview Main Functions: 1.checkIn(): Prompts the user to enter a room number and guest name, updating the room status. 2.checkOut(): Prompts for a room number and checks out the guest if occupied. 3.viewOccupancy(): Displays the status of all rooms in the output area. 4.displayMessage(): Dynamically updates the output area with messages about room statuses.
 
 hotel-management-system/
 │
